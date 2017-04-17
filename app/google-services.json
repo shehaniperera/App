@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "395813762200",
+    "firebase_url": "https://apps-fda1c.firebaseio.com",
+    "project_id": "apps-fda1c",
+    "storage_bucket": "apps-fda1c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:395813762200:android:82587599b667e6f6",
+        "android_client_info": {
+          "package_name": "com.example.shehani.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "395813762200-r168c5f41p6ec4dasklkii5qsqfju18n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxNO2o2s7vLrWeAP4EEg8dKN1OYYQjBzw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

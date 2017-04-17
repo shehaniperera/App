@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.shehani.app">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Air Aware"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".Main">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".sensorDetails" />
+        <activity android:name=".SignIn" />
+        <activity android:name=".AccountActivity" />
+        <activity android:name=".MenubarScreen" />
+        <activity android:name=".Contactus" />
+        <activity android:name=".Notifications" />
+        <activity android:name=".TemperatureConversion" />
+        <activity android:name=".CoPage" />
+        <activity android:name=".TemperaturePage" />
+        <activity android:name=".HumidityPage" />
+        <activity android:name=".GasPage"></activity>
+    </application>
+
+</manifest>
