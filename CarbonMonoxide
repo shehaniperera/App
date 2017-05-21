@@ -1,0 +1,35 @@
+const int AOUTpin=0;//the AOUT pin of the CO sensor goes into analog pin A0 of the arduino
+const int DOUTpin=8;//the DOUT pin of the CO sensor goes into digital pin D8 of the arduino
+const int greenLed=11;//the anode of the LED connects to digital pin D11 of the arduino - green led
+const int redLed=12;//the anode of the LED connects to digital pin D12 of the arduino - red led
+
+int limit;
+int coValue;
+
+void setup() {
+Serial.begin(115200);//sets the baud rate
+
+pinMode(DOUTpin, INPUT);//sets the pin as an input to the arduino
+pinMode(greenLed, OUTPUT);//sets the green Led pin as an output of the arduino
+pinMode(redLed, OUTPUT);//sets the red Led pin as an output of the arduino
+}
+
+void loop(){
+
+coValue= analogRead(AOUTpin);//reads the analaog value from the CO sensor's AOUT pin
+limit= digitalRead(DOUTpin);//reads the digital value from the CO sensor's DOUT pin
+
+Serial.print("CO value: ");
+Serial.println(coValue);//prints the CO value
+
+Serial.print("Limit: ");
+Serial.print(limit);//prints the limit reached as either LOW or HIGH 
+delay(100);
+
+if (limit == HIGH){
+digitalWrite(redLed, HIGH);//if limit has been reached, Red LED turns on as status indicator
+}
+else{
+digitalWrite(greenLed, HIGH);//if threshold not reached, Green LED turns on as status indicator
+}
+}
