@@ -32,6 +32,7 @@ public class SignIn extends AppCompatActivity {
     private static final String TAG = "SignIn";
     private FirebaseAuth.AuthStateListener mAuthListener;
     private Button email;
+    String gas,temp,humidity,co;
 
 
     @Override
@@ -42,6 +43,12 @@ public class SignIn extends AppCompatActivity {
         googleBtn = (SignInButton)findViewById(R.id.googlebutton);
         mAuth = FirebaseAuth.getInstance();
         email = (Button) findViewById(R.id.btnemail);
+
+        Intent i = this.getIntent();
+        gas = i.getStringExtra("gas");
+        temp = i.getStringExtra("temp");
+        humidity = i.getStringExtra("humidity");
+        co = i.getStringExtra("co");
 
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -76,7 +83,14 @@ public class SignIn extends AppCompatActivity {
 
                 if(firebaseAuth.getCurrentUser() != null){
                    // startActivity(new Intent(SignIn.this,MenubarScreen.class));
-                    startActivity(new Intent(SignIn.this,sensorDetails.class));
+                    Intent i = new Intent(SignIn.this,sensorDetails.class);
+                    i.putExtra("gas",gas);
+                    i.putExtra("temp",temp);
+                    i.putExtra("humi",humidity);
+                    i.putExtra("co",co);
+                    Toast.makeText(getApplicationContext(), gas+ " SignIn", Toast.LENGTH_LONG).show();
+                    startActivity(i);
+
                 }
             }
         };
@@ -87,6 +101,9 @@ public class SignIn extends AppCompatActivity {
                 startActivity(new Intent(SignIn.this,MainActivity.class));
             }
         });
+
+
+
 
     }
 

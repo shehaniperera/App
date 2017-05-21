@@ -57,12 +57,17 @@ int hour = 0;
         Gas = (TextView) findViewById(R.id.textView5);
         Co = (TextView) findViewById(R.id.textView6);
 
+        Intent i = this.getIntent();
+        String g = i.getStringExtra("gas");
+        String t = i.getStringExtra("temp");
+        String h = i.getStringExtra("humi");
+        String c = i.getStringExtra("co");
 
         Temp.setText("Temp - 29"+ (char) 0x00B0+"C");
         Toast.makeText(getApplicationContext(), Temp.getText().toString(), Toast.LENGTH_LONG).show();
-        Humidity.setText("Humidity - 91% ");
-        Gas.setText("Gas - 199 ");
-        Co.setText("CO - 431 ");
+        Humidity.setText("Humidity - 91" +"% ");
+        Gas.setText("Gas - "+g);
+        Co.setText("CO - "+c);
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override

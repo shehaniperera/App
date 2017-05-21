@@ -167,6 +167,7 @@ public class Main extends AppCompatActivity {
                 intent.putExtra("temp",temp);
                 intent.putExtra("humidity",humidity);
                 intent.putExtra("co",co);
+                Toast.makeText(getApplicationContext(), gas+"Main intent", Toast.LENGTH_LONG).show();
                 finish();
                 startActivity(intent);
             }
