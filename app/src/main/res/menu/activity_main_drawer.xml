@@ -37,5 +37,11 @@
             android:icon="@drawable/ic_toc_black_24dp"
             android:title="App info" />
 
+        <item
+            android:id="@+id/health_tips"
+            android:icon="@drawable/ic_health"
+            android:title="Health Tips" />
+
     </group>
+
 </menu>

@@ -15,13 +15,15 @@ import android.widget.Toast;
 
 public class MenubarScreen extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
+    String temp,t;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menubar_screen);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        setSupportActionBar(toolbar);
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -32,6 +34,11 @@ public class MenubarScreen extends AppCompatActivity implements NavigationView.O
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        temp = this.getIntent().getStringExtra("Temp");
+        t = temp;
+        Toast.makeText(getApplicationContext(), temp, Toast.LENGTH_LONG).show();
     }
 
 
@@ -56,7 +63,7 @@ public class MenubarScreen extends AppCompatActivity implements NavigationView.O
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
+        // automatically handle clicks on the com.example.shehani.app.Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         return super.onOptionsItemSelected(item);
@@ -68,7 +75,7 @@ public class MenubarScreen extends AppCompatActivity implements NavigationView.O
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "com.example.shehani.app.Home", Toast.LENGTH_SHORT).show();
             Intent home = new Intent(this,sensorDetails.class);
             startActivity(home);
 
@@ -80,6 +87,7 @@ public class MenubarScreen extends AppCompatActivity implements NavigationView.O
         }else if (id == R.id.item_temp){
             Toast.makeText(this, "Temperature Settings", Toast.LENGTH_SHORT).show();
             Intent temp = new Intent(this,TemperatureConversion.class);
+            temp.putExtra("Temp",t);
             startActivity(temp);
 
         }else if (id == R.id.item_notify){
@@ -92,6 +100,11 @@ public class MenubarScreen extends AppCompatActivity implements NavigationView.O
             Intent appInfo = new Intent(this,AppInfo.class);
             startActivity(appInfo);
 
+        }
+        else if(id == R.id.health_tips){
+            Toast.makeText(this, "Health Tips", Toast.LENGTH_SHORT).show();
+           // Intent healthT = new Intent(this,HealthTips.class);
+           // startActivity(healthT);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

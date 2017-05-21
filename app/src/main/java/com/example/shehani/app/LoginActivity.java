@@ -74,7 +74,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
                 if(task.isSuccessful()){
                     finish();
-                    startActivity(new Intent(LoginActivity.this,MenubarScreen.class));
+                   // startActivity(new Intent(LoginActivity.this,MenubarScreen.class));
+                    startActivity(new Intent(LoginActivity.this,sensorDetails.class));
                 }
             }
         });

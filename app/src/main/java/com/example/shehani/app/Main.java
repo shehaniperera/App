@@ -1,18 +1,37 @@
 package com.example.shehani.app;
 
 
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v4.view.GestureDetectorCompat;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.widget.Toast;
+
+import com.google.firebase.analytics.FirebaseAnalytics;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
+import java.util.UUID;
 
 public class Main extends AppCompatActivity {
 
+    private BluetoothSocket btSocket;
+    InputStream inputStream;
+    BluetoothDevice device;
+    private FirebaseAnalytics mFirebaseAnalytics;
 
+    String gas,temp,humidity,co;
     private GestureDetectorCompat gestureObject;
-
+    final UUID PORT_UUID = UUID.fromString("00001101-0000-1000-8000-00805f9b34fb");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +39,113 @@ public class Main extends AppCompatActivity {
 
         gestureObject = new GestureDetectorCompat(this , new LearnGesture());
 
+//        Toast.makeText(getApplicationContext(), "Test1", Toast.LENGTH_LONG).show();
+
+        if(connectBluetooth()){
+          getData();
+       }
+
+        else{
+            Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_LONG).show();
+        }
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+    }
+
+
+    public boolean connectBluetooth() {
+        Toast.makeText(this,"ll",Toast.LENGTH_LONG).show();
+        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        Set<BluetoothDevice> bondedDevices = bluetoothAdapter.getBondedDevices();
+        for (BluetoothDevice iterator : bondedDevices) {
+            if (iterator.getAddress().equals("98:D3:32:30:A0:65")) {
+                //("00:21:13:00:3D:68")
+                device = iterator;
+                break;
+            }
+        }
+        boolean connected = true;
+        Toast.makeText(getApplicationContext(), "Came2", Toast.LENGTH_LONG).show();
+        try {
+
+            btSocket = device.createRfcommSocketToServiceRecord(PORT_UUID);
+            btSocket.connect();
+        } catch (Exception e) {
+            e.printStackTrace();
+            connected = false;
+        }
+        if (connected) {
+            try {
+                inputStream = btSocket.getInputStream();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+        return connected;
+    }
+
+    void getData() {
+        final android.os.Handler handler = new android.os.Handler();
+//        buffer = new byte[1024];
+        Toast.makeText(getApplicationContext(), "Came3", Toast.LENGTH_LONG).show();
+        final Thread thread = new Thread(new Runnable() {
+            public void run() {
+//                Toast.makeText(getApplicationContext(), "Why", Toast.LENGTH_LONG).show();
+                while (true) {
+//                    Toast.makeText(getApplicationContext(), "VVVV", Toast.LENGTH_LONG).show();
+                    try {
+                        int byteCount = inputStream.available();
+//                        Toast.makeText(getApplicationContext(), "1", Toast.LENGTH_LONG).show();
+                        if (byteCount > 0) {
+//                            Toast.makeText(getApplicationContext(), "2", Toast.LENGTH_LONG).show();
+//                            byte[] rawBytes = new byte[byteCount];
+//                            int bytes = inputStream.read(rawBytes);
+//                            final String string = new String(rawBytes, 0, bytes);
+                            byte[] rawBytes = new byte[byteCount];
+                            inputStream.read(rawBytes);
+                            final String string = new String(rawBytes, "UTF-8");
+
+                            try {
+//                                Toast.makeText(getApplicationContext(), string, Toast.LENGTH_LONG).show();
+//                                final String[] arr = string.split(";");
+//                                final String[] data = arr[0].split(",");
+////
+//                                final int ort = Integer.parseInt(data[0]);
+//                                final int nmb = Integer.parseInt(data[1]);
+
+                                handler.post(new Runnable() {
+                                    public void run() {
+                                        while (true) {
+                                       Toast.makeText(getApplicationContext(),string, Toast.LENGTH_LONG).show();
+
+                                        gas =string.split(",")[0];
+                                        temp = string.split(",")[1];
+                                        humidity = string.split(",")[2];
+                                        co = string.split(",")[3];
+
+                                            Toast.makeText(getApplicationContext(),"Gas"+gas, Toast.LENGTH_LONG).show();
+                                            Toast.makeText(getApplicationContext(),"Temp"+temp, Toast.LENGTH_LONG).show();
+                                            Toast.makeText(getApplicationContext(),"Humidity"+humidity, Toast.LENGTH_LONG).show();
+                                            Toast.makeText(getApplicationContext(),"CO"+co, Toast.LENGTH_LONG).show();
+
+
+                                            break;
+                                        }
+                                    }
+                                });
+                            }catch (Exception e){
+                                Toast.makeText(getApplicationContext(), "Bluetooth Connectivity Error!!!!!!", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    } catch (Exception ex) {
+                        Thread.currentThread().interrupt();
+                    }
+                    SystemClock.sleep(800);
+                }
+            }
+        });
+        thread.start();
     }
 
     @Override
@@ -37,6 +163,10 @@ public class Main extends AppCompatActivity {
             if (event2.getX() > event1.getX() ){
 
                 Intent intent = new Intent(Main.this , SignIn.class);
+                intent.putExtra("gas",gas);
+                intent.putExtra("temp",temp);
+                intent.putExtra("humidity",humidity);
+                intent.putExtra("co",co);
                 finish();
                 startActivity(intent);
             }
@@ -48,6 +178,9 @@ public class Main extends AppCompatActivity {
             return true;
         }
     }
+
+
+
 }
 
 

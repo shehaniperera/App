@@ -75,7 +75,8 @@ public class SignIn extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
 
                 if(firebaseAuth.getCurrentUser() != null){
-                    startActivity(new Intent(SignIn.this,MenubarScreen.class));
+                   // startActivity(new Intent(SignIn.this,MenubarScreen.class));
+                    startActivity(new Intent(SignIn.this,sensorDetails.class));
                 }
             }
         };
