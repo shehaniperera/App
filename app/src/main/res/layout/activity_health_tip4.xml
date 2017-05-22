@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.shehani.app.HealthTip4">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ventilate Your Kitchen"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:id="@+id/textView12"
+        android:textIsSelectable="false"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView4"
+        android:layout_marginTop="41dp"
+        android:src="@drawable/cooking_stove"
+        android:layout_below="@+id/textView12"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Cooking can be a big source of indoor air pollution, especially if you have a gas stove. Scientists who measured indoor air quality found that cooking a single meal on a gas stove can produce levels of carbon monoxide that the EPA considers unsafe to breathe.
+
+Ventilate your kitchen stove directly window when you cook.  "
+        android:id="@+id/textView13"
+        android:textSize="13dp"
+        android:layout_marginTop="31dp"
+        android:layout_below="@+id/imageView4"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="   Next   "
+        android:id="@+id/nextTip5btn"
+        android:background="#2455f8"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="32dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PREVIOUS"
+        android:id="@+id/previousBtn"
+        android:background="#2455f8"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:layout_alignTop="@+id/nextTip5btn"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home"
+        android:id="@+id/homeBtn"
+        android:background="#2455f8"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:layout_alignTop="@+id/previousBtn"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>

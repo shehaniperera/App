@@ -17,7 +17,19 @@ public class TemperatureConversion extends AppCompatActivity {
 
         temp = this.getIntent().getStringExtra("Temp");
         Toast.makeText(getApplicationContext(), temp, Toast.LENGTH_LONG).show();
+
+
+
+
     }
+
+
+
+    @Override
+    public void onBackPressed() {
+
+    }
+
 
  public void onRadioButtonClicked(View view){
 
@@ -41,5 +53,8 @@ public class TemperatureConversion extends AppCompatActivity {
              }
      }
  }
+
+
+
 
 }

@@ -103,8 +103,8 @@ public class MenubarScreen extends AppCompatActivity implements NavigationView.O
         }
         else if(id == R.id.health_tips){
             Toast.makeText(this, "Health Tips", Toast.LENGTH_SHORT).show();
-           // Intent healthT = new Intent(this,HealthTips.class);
-           // startActivity(healthT);
+            Intent healthT = new Intent(this,SecondMain.class);
+             startActivity(healthT);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

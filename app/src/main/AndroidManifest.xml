@@ -36,6 +36,12 @@
         <activity android:name=".TemperaturePage" />
         <activity android:name=".HumidityPage" />
         <activity android:name=".GasPage" />
+        <activity android:name=".SecondMain"/>
+        <activity android:name=".HealthTip1"/>
+        <activity android:name=".HealthTip2"/>
+        <activity android:name=".HealthTip3"/>
+        <activity android:name=".HealthTip4"/>
+        <activity android:name=".HealthTip5"/>
         <activity android:name=".UserDetails"></activity>
     </application>
 

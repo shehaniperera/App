@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.shehani.app.HealthTip3">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Don&apos;t idle the Car in the Grage"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:id="@+id/textView8"
+        android:textIsSelectable="false"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Burning gas or other fules indoos can produce dangerous levels of indoor air pollution and deadly carbon monoxide. Fumes from cars or lawnmowers left running in enclosed spaces, like garages,can endanger your health.
+
+To that point, you should also only use gas stoves and heaters vent directly to the outside"
+        android:id="@+id/textView9"
+        android:textSize="13dp"
+        android:layout_marginTop="46dp"
+        android:layout_below="@+id/imageView3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView3"
+        android:src="@drawable/car_garge"
+        android:layout_below="@+id/textView8"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PREVIOUS"
+        android:id="@+id/previousBtn"
+        android:background="#2455f8"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:layout_below="@+id/textView9"
+        android:layout_toLeftOf="@+id/imageView3"
+        android:layout_toStartOf="@+id/imageView3"
+        android:layout_marginTop="32dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="   Next   "
+        android:id="@+id/nextTip4btn"
+        android:background="#2455f8"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:layout_alignTop="@+id/previousBtn"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home"
+        android:id="@+id/homeBtn"
+        android:background="#2455f8"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:layout_alignTop="@+id/nextTip4btn"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

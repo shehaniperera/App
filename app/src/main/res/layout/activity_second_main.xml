@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.shehani.app.SecondMain">
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgButtonTip1"
+        android:background="#ffffff"
+        android:src="@drawable/images"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/border_style"
+        android:id="@+id/frameLayoutTip1"
+        android:layout_alignTop="@+id/imgButtonTip1"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@+id/imgButtonTip1"
+        android:nestedScrollingEnabled="true">
+
+        <TextView
+            android:layout_width="212dp"
+            android:layout_height="wrap_content"
+            android:text="Avoid Smoking indoors"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:id="@+id/textView2"
+            android:textIsSelectable="false"
+
+            android:layout_gravity="right|center_vertical"
+            android:layout_alignTop="@+id/imgButtonTip1"
+            android:layout_alignRight="@+id/frameLayoutTip1"
+            android:layout_alignEnd="@+id/frameLayoutTip1"
+            android:textStyle="italic" />
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Humidity levels"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:id="@+id/textView5"
+        android:textIsSelectable="false"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_below="@+id/imgButtonTip1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="28dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="28dp"
+        android:textStyle="italic" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgButtonTip2"
+        android:src="@drawable/humidity_levels"
+        android:background="#ffffff"
+        android:layout_below="@+id/frameLayoutTip1"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/border_style"
+        android:id="@+id/frameLayoutTip2"
+        android:layout_below="@+id/imgButtonTip1"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@+id/imgButtonTip2"></FrameLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Don&apos;t idle the Car in the Grage"
+        android:textSize="15dp"
+        android:layout_marginLeft="20dp"
+        android:textColor="#000000"
+        android:id="@+id/textView10"
+        android:textIsSelectable="false"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_centerVertical="true"
+        android:layout_alignRight="@+id/imgButtonTip2"
+        android:layout_alignEnd="@+id/imgButtonTip2"
+        android:visibility="invisible" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Don&apos;t idle the car in the Grage"
+        android:id="@+id/textView11"
+        android:layout_above="@+id/textView10"
+        android:layout_alignLeft="@+id/textView10"
+        android:layout_alignStart="@+id/textView10"
+        android:textSize="18dp"
+        android:textColor="#000000"
+        android:textStyle="italic" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgButtonTip3"
+        android:src="@drawable/cars_idle"
+        android:background="@drawable/cars_idle"
+        android:layout_alignBottom="@+id/textView10"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/frameLayoutTip2"
+        android:background="@drawable/border_style"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/textView10"
+        android:id="@+id/frameLayoutTip3"></FrameLayout>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgButtonTip4"
+        android:src="@drawable/cooking_stove1"
+        android:background="#ffffff"
+        android:layout_below="@+id/textView10"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ventilate Your Kitchen"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:id="@+id/textView14"
+        android:textIsSelectable="false"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_below="@+id/textView10"
+        android:layout_alignLeft="@+id/textView5"
+        android:layout_alignStart="@+id/textView5"
+        android:layout_marginTop="31dp"
+        android:textStyle="italic" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/textView10"
+        android:background="@drawable/border_style"
+        android:layout_alignBottom="@+id/imgButtonTip4"
+        android:id="@+id/frameLayoutTip4"></FrameLayout>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgButtonTip5"
+        android:src="@drawable/temperatura"
+        android:background="#ffffff"
+        android:layout_below="@+id/frameLayoutTip4"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Indoor Temperature"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:id="@+id/textView16"
+        android:textIsSelectable="false"
+        android:layout_gravity="center_horizontal|top"
+        android:textStyle="italic"
+        android:layout_marginTop="29dp"
+        android:layout_below="@+id/imgButtonTip4"
+        android:layout_alignLeft="@+id/textView10"
+        android:layout_alignStart="@+id/textView10" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignTop="@+id/imgButtonTip5"
+        android:layout_alignBottom="@+id/imgButtonTip5"
+        android:background="@drawable/border_style"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/frameLayoutTip5"></FrameLayout>
+
+</RelativeLayout>

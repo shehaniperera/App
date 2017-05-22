@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.shehani.app.HealthTip1">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Avoid Smoking indoors"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:id="@+id/textView3"
+        android:textIsSelectable="false"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/stopsmokingnow"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Don’t smoke in or near the home. Cigarette smoke, even secondhand, is one of the leading causes of lung cancer, asthma and the smoke sticks around. Ban smoking from a home and its premises to prevent this pollution."
+        android:id="@+id/textView4"
+        android:textSize="14sp"
+        android:layout_marginTop="35dp"
+        android:layout_below="@+id/imageView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="   Next   "
+        android:id="@+id/nextTip2Btn"
+        android:background="#2455f8"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:layout_below="@+id/textView4"
+        android:layout_alignRight="@+id/textView4"
+        android:layout_alignEnd="@+id/textView4"
+        android:layout_marginTop="47dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home"
+        android:id="@+id/homeBtn"
+        android:background="#2455f8"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:layout_alignTop="@+id/nextTip2Btn"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
