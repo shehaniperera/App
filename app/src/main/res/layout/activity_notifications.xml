@@ -24,11 +24,54 @@
     <Switch
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/switchNoti"
+        android:id="@+id/switchtem"
         android:checked="false"
-        android:layout_alignTop="@+id/textView3"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:text="Temperature  "
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="20dp"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="44dp" />
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/switchhum"
+        android:layout_marginLeft="10dp"
+        android:checked="false"
+        android:text="Humidity  "
+        android:layout_marginBottom="10dp"
+        android:textSize="20dp"
+        android:layout_below="@+id/switchtem"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/switchgas"
+        android:layout_marginLeft="10dp"
+        android:checked="false"
+        android:text="Gas  "
+        android:textSize="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@+id/switchhum"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/switchco"
+        android:checked="false"
+        android:layout_marginLeft="10dp"
+        android:text="CO  "
+        android:textSize="20dp"
+        android:layout_below="@+id/switchgas"
+        android:layout_alignRight="@+id/switchgas"
+        android:layout_alignEnd="@+id/switchgas" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -37,8 +80,8 @@
         android:text="SMS "
         android:textSize="25dp"
         android:id="@+id/textView4"
-        android:layout_marginTop="75dp"
-        android:layout_below="@+id/textView3"
+        android:layout_marginTop="57dp"
+        android:layout_below="@+id/switchco"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -47,7 +90,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/switchSms"
         android:checked="false"
-        android:layout_alignTop="@+id/textView4"
-        android:layout_alignLeft="@+id/switchNoti"
-        android:layout_alignStart="@+id/switchNoti" />
+        android:layout_alignBottom="@+id/textView4"
+        android:layout_alignRight="@+id/textView3"
+        android:layout_alignEnd="@+id/textView3" />
 </RelativeLayout>

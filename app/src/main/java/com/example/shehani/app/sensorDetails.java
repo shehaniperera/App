@@ -145,6 +145,9 @@ int hour = 0;
             public void onClick(View v) {
                 Intent int1 = new Intent(sensorDetails.this, MenubarScreen.class);
                 int1.putExtra("Temp",Temp.getText().toString());
+                int1.putExtra("Humi",Humidity.getText().toString());
+                int1.putExtra("Gas",Gas.getText().toString());
+                int1.putExtra("Co",Co.getText().toString());
                 startActivity(int1);
             }
         });

@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 public class MenubarScreen extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
-    String temp,t;
+    String temp,t,hum ,h,gas,g,co,c;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +38,12 @@ public class MenubarScreen extends AppCompatActivity implements NavigationView.O
 
         temp = this.getIntent().getStringExtra("Temp");
         t = temp;
+        hum = this.getIntent().getStringExtra("Humi");
+        h = hum;
+        gas = this.getIntent().getStringExtra("Gas");
+        g = gas;
+        co = this.getIntent().getStringExtra("Co");
+        c = co;
         Toast.makeText(getApplicationContext(), temp, Toast.LENGTH_LONG).show();
     }
 
@@ -94,6 +100,9 @@ public class MenubarScreen extends AppCompatActivity implements NavigationView.O
             Toast.makeText(this, "Notification Settings", Toast.LENGTH_SHORT).show();
             Intent notify = new Intent(this,Notifications.class);
             notify.putExtra("Temp",t);
+            notify.putExtra("Hum",h);
+            notify.putExtra("Gas",g);
+            notify.putExtra("Co",c);
             startActivity(notify);
 
         }else if (id == R.id.nav_appInfo) {

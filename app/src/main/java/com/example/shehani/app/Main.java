@@ -119,10 +119,11 @@ public class Main extends AppCompatActivity {
                                         while (true) {
                                        Toast.makeText(getApplicationContext(),string, Toast.LENGTH_LONG).show();
 
-                                        gas =string.split(",")[0];
-                                        temp = string.split(",")[1];
-                                        humidity = string.split(",")[2];
-                                        co = string.split(",")[3];
+
+                                        gas =string.split(",")[0].trim();
+                                        temp = string.split(",")[1].trim();
+                                        humidity = string.split(",")[2].trim();
+                                        co = string.split(",")[3].trim();
 
                                             Toast.makeText(getApplicationContext(),"Gas"+gas, Toast.LENGTH_LONG).show();
                                             Toast.makeText(getApplicationContext(),"Temp"+temp, Toast.LENGTH_LONG).show();
