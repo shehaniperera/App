@@ -37,6 +37,7 @@ TextView Temp,Humidity,Gas,Co;
 DatabaseReference root = FirebaseDatabase.getInstance().getReference();
 int hour = 0;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,9 +64,27 @@ int hour = 0;
         String h = i.getStringExtra("humi");
         String c = i.getStringExtra("co");
 
-        Temp.setText("Temp - 29"+ (char) 0x00B0+"C");
-        Toast.makeText(getApplicationContext(), Temp.getText().toString(), Toast.LENGTH_LONG).show();
-        Humidity.setText("Humidity - 91" +"% ");
+
+        String extra = getIntent().getStringExtra("Fah");
+        String ex = getIntent().getStringExtra("Cel");
+        Boolean isCelciusSelected = getIntent().getBooleanExtra("C",true);
+        Boolean isFahrenheitChecked = getIntent().getBooleanExtra("F",true);
+
+        if(extra != null && isFahrenheitChecked){
+
+            Temp.setText("Temp - "+extra+ (char) 0x00B0+"F");
+
+        }
+
+        else if(ex != null && isCelciusSelected){
+            Temp.setText("Temp- "+t+ (char) 0x00B0+"C");
+        }
+
+        else {
+            Temp.setText("Temp- "+t+ (char) 0x00B0+"C");
+        }
+
+        Humidity.setText("Humidity- 91"+"%");
         Gas.setText("Gas - "+g);
         Co.setText("CO - "+c);
 
@@ -129,6 +148,9 @@ int hour = 0;
                 startActivity(int1);
             }
         });
+
+
+
     }
 
 

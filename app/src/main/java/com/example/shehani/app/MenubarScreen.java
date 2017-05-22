@@ -23,7 +23,7 @@ public class MenubarScreen extends AppCompatActivity implements NavigationView.O
         setContentView(R.layout.activity_menubar_screen);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
+
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -93,6 +93,7 @@ public class MenubarScreen extends AppCompatActivity implements NavigationView.O
         }else if (id == R.id.item_notify){
             Toast.makeText(this, "Notification Settings", Toast.LENGTH_SHORT).show();
             Intent notify = new Intent(this,Notifications.class);
+            notify.putExtra("Temp",t);
             startActivity(notify);
 
         }else if (id == R.id.nav_appInfo) {

@@ -24,7 +24,7 @@
     <Switch
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/switch1"
+        android:id="@+id/switchNoti"
         android:checked="false"
         android:layout_alignTop="@+id/textView3"
         android:layout_alignParentRight="true"
@@ -45,9 +45,9 @@
     <Switch
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/switch2"
+        android:id="@+id/switchSms"
         android:checked="false"
         android:layout_alignTop="@+id/textView4"
-        android:layout_alignLeft="@+id/switch1"
-        android:layout_alignStart="@+id/switch1" />
+        android:layout_alignLeft="@+id/switchNoti"
+        android:layout_alignStart="@+id/switchNoti" />
 </RelativeLayout>
