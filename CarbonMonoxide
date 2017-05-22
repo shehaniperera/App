@@ -1,3 +1,4 @@
+#include <SoftwareSerial.h>
 const int AOUTpin=0;//the AOUT pin of the CO sensor goes into analog pin A0 of the arduino
 const int DOUTpin=8;//the DOUT pin of the CO sensor goes into digital pin D8 of the arduino
 const int greenLed=11;//the anode of the LED connects to digital pin D11 of the arduino - green led
