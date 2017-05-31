@@ -1,0 +1,59 @@
+    private class ConnectedThreadByBluetoothDevice extends Thread {
+
+        private final BluetoothSocket btSocket;
+        private final InputStream btInStream;
+        private final OutputStream btOutStream;
+
+
+        public ConnectedThreadByBluetoothDevice(BluetoothSocket socket) {
+            btSocket = socket;
+            InputStream input = null;
+            OutputStream output = null;
+            try {
+                input = socket.getInputStream();
+                output = socket.getOutputStream();
+            } catch (IOException e) {
+            }
+            btInStream = input;
+            btOutStream = output;
+        }
+
+
+        public void run() {
+            byte[] bufferData = new byte[1024];
+            int startPoint = 0;
+            int data = 0;
+            while (true) {
+                try {
+                    data += btInStream.read(bufferData, data, bufferData.length - data);
+                    for (int i = startPoint; i < data; i++) {
+                        if (bufferData[i] == "#".getBytes()[0]) {
+                          //  Handler.obtainMessage(1, begin, i, buffer).sendToTarget();
+                            startPoint = i + 1;
+                            if (i == data - 1) {
+                                data = 0;
+                                startPoint = 0;
+                            }
+                        }
+                    }
+                } catch (IOException e) {
+                    break;
+                }
+ }
+        }
+
+        public void write(byte[] bytes) {
+            try {
+                btOutStream.write(bytes);
+            } catch (IOException e) {
+            }
+        }
+
+        public void cancel() {
+            try {
+                btSocket.close();
+            } catch (IOException e) {
+            }
+        }
+
+    }
