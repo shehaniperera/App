@@ -1,5 +1,7 @@
 package com.example.shehani.app;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -9,18 +11,29 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class MenubarScreen extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     String temp,t,hum ,h,gas,g,co,c;
+    String u , remove;
+    private FirebaseAuth mAuth; //firebase
+    private FirebaseAuth.AuthStateListener mAuthListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menubar_screen);
+
+        mAuth = FirebaseAuth.getInstance();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
@@ -45,7 +58,20 @@ public class MenubarScreen extends AppCompatActivity implements NavigationView.O
         co = this.getIntent().getStringExtra("Co");
         c = co;
         Toast.makeText(getApplicationContext(), temp, Toast.LENGTH_LONG).show();
+
+
+
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+
+                if(firebaseAuth.getCurrentUser() == null){
+                    startActivity(new Intent(MenubarScreen.this,Main.class));
+                }
+            }
+        };
     }
+
 
 
 
@@ -117,8 +143,99 @@ public class MenubarScreen extends AppCompatActivity implements NavigationView.O
              startActivity(healthT);
         }
 
+
+        else if(id == R.id.exit){
+            Toast.makeText(this, "Logout from the system", Toast.LENGTH_SHORT).show();
+            showMessage("Confirmation!!!!", "Are you sure that you want to logout from the System?");
+        }
+
+
+        else if(id == R.id.appuser){
+            Intent i = new Intent(MenubarScreen.this,CurrentUser.class);
+            u = mAuth.getCurrentUser().getEmail();
+            i.putExtra("current",u);
+            Toast.makeText(this, "current u"+u, Toast.LENGTH_SHORT).show();
+            startActivity(i);
+
+        }
+
+        else if(id == R.id.deleteuser){
+            final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            user.delete()
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(MenubarScreen.this, "User is Deleted"+user, Toast.LENGTH_SHORT).show();
+                            }
+
+                            else{
+                                Toast.makeText(MenubarScreen.this, "User is not Deleted"+user, Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+
+
+        }
+
+
+        else if(id == R.id.updateuser){
+
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+            user.updateEmail("user@example.com")
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(MenubarScreen.this, "User is Updated", Toast.LENGTH_SHORT).show();
+                            }
+
+                            else{
+                                Toast.makeText(MenubarScreen.this, "User is not Updated", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+        }
+
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+
+    public void showMessage(String title , String Message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        // create object of AlertDialogBuilder which an inner class of AlertDialog
+        builder.setCancelable(true); // sets the property that the dialog can be cancelled or not
+        builder.setPositiveButton("Yes" ,null);
+        builder.setNegativeButton("No",null);
+
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) { // onclick on positive button
+                mAuth.signOut();
+            }
+        });
+
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) { // onclick on negative button
+                dialogInterface.dismiss(); // close dialog
+            }
+        });
+        builder.setTitle(title); //  set the title to be appear in the dialog
+        builder.setMessage(Message); //  set the message to be appear in the dialog
+        builder.show(); // show the alert
+    }
+
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
     }
 }

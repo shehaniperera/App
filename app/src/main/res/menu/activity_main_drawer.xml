@@ -42,6 +42,25 @@
             android:icon="@drawable/ic_health"
             android:title="Health Tips" />
 
+        <item
+            android:id="@+id/exit"
+            android:icon="@drawable/exit"
+            android:title="Exit" />
+
+        <item
+            android:id="@+id/appuser"
+            android:icon="@drawable/appuser"
+            android:title="Get Current User" />
+
+        <item
+            android:id="@+id/deleteuser"
+            android:icon="@drawable/remove"
+            android:title="Delete User" />
+
+        <item
+            android:id="@+id/updateuser"
+            android:icon="@drawable/edituser"
+            android:title="Update User" />
     </group>
 
 </menu>

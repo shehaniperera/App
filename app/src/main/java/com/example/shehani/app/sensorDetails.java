@@ -125,17 +125,17 @@ int hour = 0;
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                hour++;
+            public void onClick(View v) { // send data to firebase if save button is clicked
+                hour++; // get the hour
                 String h = String.valueOf(hour);
-                DatabaseReference childRef = root.child("Hour: "+h);
-                Map<String,Object> map = new HashMap<String, Object>();
+                DatabaseReference childRef = root.child("Hour: "+h);  //root-is addded cause if not its getting updated to the existing value without creating a new value
+                Map<String,Object> map = new HashMap<String, Object>(); // create a map and add the sensor data values
 
-                map.put("Temperature",Temp.getText().toString());
-                map.put("Humidity",Humidity.getText().toString());
-                map.put("Gas",Gas .getText().toString());
-                map.put("CO",Co.getText().toString());
-                childRef.setValue(map);
+                map.put("Temperature",Temp.getText().toString()); //tem
+                map.put("Humidity",Humidity.getText().toString()); //hum
+                map.put("Gas",Gas .getText().toString()); //gas
+                map.put("CO",Co.getText().toString()); //co
+                childRef.setValue(map); // send the data to the firebase
 
             }
         });

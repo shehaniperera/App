@@ -50,13 +50,7 @@
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/no"
-        android:hint="Phone No"
-        android:layout_margin="20dp"
-        android:textAlignment="center"/>
+
     <Button
         android:id="@+id/btnSignup"
         android:text=" SIGN UP"

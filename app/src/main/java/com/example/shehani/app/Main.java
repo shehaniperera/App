@@ -31,7 +31,8 @@ public class Main extends AppCompatActivity {
 
     String gas,temp,humidity,co;
     private GestureDetectorCompat gestureObject;
-    final UUID PORT_UUID = UUID.fromString("00001101-0000-1000-8000-00805f9b34fb");
+    //data is transfered serially
+    final UUID PORT_UUID = UUID.fromString("00001101-0000-1000-8000-00805f9b34fb"); // uniquely identify info defines a service provided by the bluetooth
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,8 +42,8 @@ public class Main extends AppCompatActivity {
 
 //        Toast.makeText(getApplicationContext(), "Test1", Toast.LENGTH_LONG).show();
 
-        if(connectBluetooth()){
-          getData();
+        if(connectBluetooth()){ //if Bluettoth connectivity is available
+          getData(); // get data from the arduino to the app
        }
 
         else{
@@ -55,20 +56,20 @@ public class Main extends AppCompatActivity {
 
     public boolean connectBluetooth() {
         Toast.makeText(this,"ll",Toast.LENGTH_LONG).show();
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter(); //device that transmits wireless data signals
         Set<BluetoothDevice> bondedDevices = bluetoothAdapter.getBondedDevices();
         for (BluetoothDevice iterator : bondedDevices) {
-            if (iterator.getAddress().equals("98:D3:32:30:A0:65")) {
+            if (iterator.getAddress().equals("98:D3:32:30:A0:65")) { // mac address of the bluetooth sensor
                 //("00:21:13:00:3D:68")
                 device = iterator;
                 break;
             }
         }
-        boolean connected = true;
+        boolean connected = true; // boolean value true if bluetooth connectivity is available
         Toast.makeText(getApplicationContext(), "Came2", Toast.LENGTH_LONG).show();
         try {
-
-            btSocket = device.createRfcommSocketToServiceRecord(PORT_UUID);
+            //socket is used to receive connection
+            btSocket = device.createRfcommSocketToServiceRecord(PORT_UUID); // connecting to a known device
             btSocket.connect();
         } catch (Exception e) {
             e.printStackTrace();
@@ -76,7 +77,7 @@ public class Main extends AppCompatActivity {
         }
         if (connected) {
             try {
-                inputStream = btSocket.getInputStream();
+                inputStream = btSocket.getInputStream(); // input stream to get the data
             } catch (IOException e) {
                 e.printStackTrace();
             }
